@@ -1,3 +1,64 @@
-.read-the-docs {
-  color: red;
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.player {
+  display: inline-block;
+  margin-bottom: 64px;
+  width: 16px;
+  height: 16px;
+  scale: 2 2;
+  background-image: url("../src/assets/elf.png");
+  animation: idle 0.5s steps(3) infinite;
+  transition-duration: 0.75s;
+}
+
+.weapon {
+  background-image: url("../src/assets/weapons.png");
+  background-position: 0 -96px;
+  margin-top: -12px;
+  margin-left: -14px;
+  width: 48px;
+  height: 48px;
+  opacity: 0;
+}
+
+@keyframes idle {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -48px 0;
+  }
+}
+
+@keyframes walk {
+  from {
+    background-position: 0 -32px;
+  }
+
+  to {
+    background-position: -64px -32px;
+  }
+}
+
+@keyframes walkBack {
+  from {
+    background-position: 0 -32px;
+  }
+
+  to {
+    background-position: -64px -32px;
+  }
+}
+
+@keyframes attack {
+  from {
+    background-position: 0 -96px;
+  }
+
+  to {
+    background-position: -240px -96px;
+  }
 }
