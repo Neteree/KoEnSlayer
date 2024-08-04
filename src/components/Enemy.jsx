@@ -1,6 +1,6 @@
 import "./Enemy.css";
 
-function Player({ isInCombat, setIsInCombat }) {
+function Enemy({ translation, isInCombat }) {
   const handleAnimationEnd = (event) => {
     const player = event.target;
 
@@ -24,10 +24,10 @@ function Player({ isInCombat, setIsInCombat }) {
           animation: isInCombat && "enemy-walk 0.75s steps(3) 1",
         }}
       >
-        <pre className="enemy-translation">안녕하세요</pre>
+        <pre className="enemy-translation">{translation}</pre>
       </div>
     </>
   );
 }
 
-export default Player;
+export default Enemy;

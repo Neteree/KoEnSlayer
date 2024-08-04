@@ -2,12 +2,18 @@
   margin: 0;
 }
 
+body {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
 .pixelated {
   image-rendering: pixelated;
 }
 
 .translation-box {
-  display: inline;
+  display: inline-block;
 }
 
 .translation-label {

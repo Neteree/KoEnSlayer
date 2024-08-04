@@ -1,14 +1,29 @@
+import { useState } from "react";
 import "./Player.css";
 
-function Player({ translation, isInCombat, setIsInCombat }) {
+function Player({
+  translationInput,
+  translation,
+  setNewTranslationPair,
+  isInCombat,
+  setIsInCombat,
+}) {
+  const [score, setScore] = useState(0);
+
   const handleAnimationEnd = (event) => {
     const player = event.target;
     const weapon = player.querySelector(".weapon");
 
     if (event.animationName == "walk") {
       player.style.animation = "idle 0.5s steps(3) 1";
-      weapon.style.animation = "attack 0.5s steps(5) 1";
-      weapon.style.opacity = 1;
+
+      if (translation == translationInput) {
+        weapon.style.animation = "attack 0.5s steps(5) 1";
+        weapon.style.opacity = 1;
+        setScore((previousScore) => previousScore + 1);
+      } else {
+        setScore((previousScore) => previousScore - 1);
+      }
     }
 
     if (event.animationName == "idle") {
@@ -19,12 +34,14 @@ function Player({ translation, isInCombat, setIsInCombat }) {
     }
 
     if (event.animationName == "walk-back") {
+      setNewTranslationPair();
       setIsInCombat(false);
     }
   };
 
   return (
     <>
+      <p>Score: {score}</p>
       <div
         className="pixelated player"
         onAnimationEnd={handleAnimationEnd}
@@ -34,7 +51,7 @@ function Player({ translation, isInCombat, setIsInCombat }) {
         }}
       >
         <pre className="player-translation">
-          {translation == "" ? "Translation" : translation}
+          {translationInput == "" ? "Translation Input" : translationInput}
         </pre>
         <div className="weapon" />
       </div>
