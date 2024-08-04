@@ -23,7 +23,9 @@ function Player({ isInCombat, setIsInCombat }) {
           translate: isInCombat && "108px 0",
           animation: isInCombat && "enemy-walk 0.75s steps(3) 1",
         }}
-      ></div>
+      >
+        <pre className="enemy-translation">안녕하세요</pre>
+      </div>
     </>
   );
 }

@@ -9,6 +9,16 @@
   transition-duration: 0.75s;
 }
 
+.player-translation {
+  position: absolute;
+  top: -18px;
+  background-color: lightblue;
+  opacity: 0.6;
+  border-radius: 2.5px;
+  padding: 4px;
+  font-size: 0.5rem;
+}
+
 .weapon {
   background-image: url("../src/assets/weapons.png");
   margin-top: -12px;

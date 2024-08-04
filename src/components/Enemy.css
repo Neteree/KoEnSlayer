@@ -10,6 +10,16 @@
   transition-duration: 0.75s;
 }
 
+.enemy-translation {
+  position: absolute;
+  top: 18px;
+  background-color: pink;
+  opacity: 0.6;
+  border-radius: 2.5px;
+  padding: 4px;
+  font-size: 0.5rem;
+}
+
 @keyframes enemy-idle {
   from {
     background-position: 0 -16px;

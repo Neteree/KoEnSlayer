@@ -1,6 +1,6 @@
 import "./Player.css";
 
-function Player({ isInCombat, setIsInCombat }) {
+function Player({ translation, isInCombat, setIsInCombat }) {
   const handleAnimationEnd = (event) => {
     const player = event.target;
     const weapon = player.querySelector(".weapon");
@@ -33,6 +33,9 @@ function Player({ isInCombat, setIsInCombat }) {
           animation: isInCombat && "walk 0.75s steps(4) 1",
         }}
       >
+        <pre className="player-translation">
+          {translation == "" ? "Translation" : translation}
+        </pre>
         <div className="weapon" />
       </div>
     </>

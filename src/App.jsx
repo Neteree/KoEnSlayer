@@ -13,7 +13,11 @@ function App() {
 
   return (
     <>
-      <Player isInCombat={isInCombat} setIsInCombat={setIsInCombat} />
+      <Player
+        translation={translation}
+        isInCombat={isInCombat}
+        setIsInCombat={setIsInCombat}
+      />
       <Enemy isInCombat={isInCombat} setIsInCombat={setIsInCombat} />
 
       <form
