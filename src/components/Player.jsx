@@ -12,13 +12,13 @@ function Player({ isInCombat, setIsInCombat }) {
     }
 
     if (event.animationName == "idle") {
-      player.style.animation = "walkBack 0.75s steps(4) 1";
+      player.style.animation = "walk-back 0.75s steps(4) 1";
       player.style.translate = 0;
       weapon.style.animation = "none";
       weapon.style.opacity = 0;
     }
 
-    if (event.animationName == "walkBack") {
+    if (event.animationName == "walk-back") {
       setIsInCombat(false);
     }
   };
@@ -29,7 +29,7 @@ function Player({ isInCombat, setIsInCombat }) {
         className="pixelated player"
         onAnimationEnd={handleAnimationEnd}
         style={{
-          translate: isInCombat && "96px 0",
+          translate: isInCombat && "84px 0",
           animation: isInCombat && "walk 0.75s steps(4) 1",
         }}
       >

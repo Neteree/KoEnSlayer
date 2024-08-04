@@ -11,7 +11,6 @@
 
 .weapon {
   background-image: url("../src/assets/weapons.png");
-  background-position: 0 -96px;
   margin-top: -12px;
   margin-left: -14px;
   width: 48px;
@@ -39,7 +38,7 @@
   }
 }
 
-@keyframes walkBack {
+@keyframes walk-back {
   from {
     background-position: 0 -32px;
   }

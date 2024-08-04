@@ -1,0 +1,41 @@
+.enemy {
+  display: inline-block;
+  margin: 48px 8px;
+  width: 16px;
+  height: 16px;
+  translate: 192px 0;
+  scale: 2 2;
+  background-image: url("../src/assets/bat.png");
+  animation: enemy-idle 0.5s steps(3) infinite;
+  transition-duration: 0.75s;
+}
+
+@keyframes enemy-idle {
+  from {
+    background-position: 0 -16px;
+  }
+
+  to {
+    background-position: -48px -16px;
+  }
+}
+
+@keyframes enemy-walk {
+  from {
+    background-position: 0 -16px;
+  }
+
+  to {
+    background-position: -48px -16px;
+  }
+}
+
+@keyframes enemy-walk-back {
+  from {
+    background-position: 0 -16px;
+  }
+
+  to {
+    background-position: -48px -16px;
+  }
+}
