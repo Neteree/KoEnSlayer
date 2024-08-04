@@ -1,10 +1,14 @@
+* {
+  margin: 0;
+}
+
 .pixelated {
   image-rendering: pixelated;
 }
 
 .player {
   display: inline-block;
-  margin-bottom: 64px;
+  margin: 48px 8px;
   width: 16px;
   height: 16px;
   scale: 2 2;
@@ -21,6 +25,11 @@
   width: 48px;
   height: 48px;
   opacity: 0;
+}
+
+.button {
+  display: block;
+  margin: 0;
 }
 
 @keyframes idle {
