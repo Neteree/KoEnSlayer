@@ -6,8 +6,10 @@
   image-rendering: pixelated;
 }
 
-.button {
-  display: block;
-  margin: 0;
+.translation-box {
+  display: inline;
 }
 
+.translation-label {
+  display: block;
+}
