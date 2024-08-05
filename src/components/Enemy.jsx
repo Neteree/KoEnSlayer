@@ -5,7 +5,7 @@ function Enemy({ translationInput, translationPair, isInCombat }) {
     const player = event.target;
 
     if (event.animationName == "enemy-walk") {
-      if (translationPair[0] == translationInput) {
+      if (translationPair[0] == translationInput.toLowerCase()) {
         player.style.animation = "enemy-hit 0.5s steps(4) 1";
       } else {
         player.style.animation = "enemy-attack 0.5s steps(2) 1";

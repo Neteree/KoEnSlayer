@@ -5,7 +5,7 @@ function TranslationForm({
   setTranslationInput,
   setIsInCombat,
 }) {
-  const handleTranslation = (event) => {
+  const handleTranslationInput = (event) => {
     setTranslationInput(event.target.value);
   };
 
@@ -24,7 +24,7 @@ function TranslationForm({
           id="translation"
           type="text"
           value={translationInput}
-          onChange={handleTranslation}
+          onChange={handleTranslationInput}
           autocomplete="off"
           required
         />

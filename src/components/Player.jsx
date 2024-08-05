@@ -16,7 +16,7 @@ function Player({
     const weapon = player.querySelector(".weapon");
 
     if (event.animationName == "walk") {
-      if (translation == translationInput) {
+      if (translation == translationInput.toLowerCase()) {
         player.style.animation = "idle 0.5s steps(3) 1";
         weapon.style.animation = "attack 0.5s steps(5) 1";
         weapon.style.opacity = 1;
