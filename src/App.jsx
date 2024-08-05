@@ -8,7 +8,10 @@ import TranslationForm from "./components/TranslationForm";
 function App() {
   const translationPairs = [
     ["hello", "안녕하세요"],
-    ["water", "물"],
+    ["sorry", "죄송합니다"],
+    ["yes", "네"],
+    ["no", "아니요"],
+    ["thank you", "감사합니다"],
   ];
 
   const [isInCombat, setIsInCombat] = useState(false);
