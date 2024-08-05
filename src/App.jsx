@@ -3,6 +3,7 @@ import shuffle from "./util/shuffle";
 import { useState } from "react";
 import Player from "./components/Player";
 import Enemy from "./components/Enemy";
+import TranslationForm from "./components/TranslationForm";
 
 function App() {
   const translationPairs = [
@@ -16,14 +17,11 @@ function App() {
     shuffle(shuffle(translationPairs)[0])
   );
 
-  const handleTranslation = (event) => {
-    setTranslationInput(event.target.value);
-  };
-
   return (
     <>
       <Player
         translationInput={translationInput}
+        setTranslationInput={setTranslationInput}
         translation={translationPair[0]}
         setNewTranslationPair={() =>
           setTranslationPair(shuffle(shuffle(translationPairs)[0]))
@@ -37,25 +35,11 @@ function App() {
         isInCombat={isInCombat}
       />
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          setIsInCombat(true);
-        }}
-      >
-        <div className="translation-box">
-          <label className="translation-label" htmlFor="translation">
-            Translation Input:
-          </label>
-          <input
-            id="translation"
-            type="text"
-            value={translationInput}
-            onChange={handleTranslation}
-          />
-        </div>
-        <button type="submit">submit</button>
-      </form>
+      <TranslationForm
+        translationInput={translationInput}
+        setTranslationInput={setTranslationInput}
+        setIsInCombat={setIsInCombat}
+      />
     </>
   );
 }

@@ -3,6 +3,7 @@ import "./Player.css";
 
 function Player({
   translationInput,
+  setTranslationInput,
   translation,
   setNewTranslationPair,
   isInCombat,
@@ -34,6 +35,7 @@ function Player({
     }
 
     if (event.animationName == "walk-back") {
+      setTranslationInput("");
       setNewTranslationPair();
       setIsInCombat(false);
     }

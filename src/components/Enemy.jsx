@@ -22,18 +22,16 @@ function Enemy({ translationInput, translationPair, isInCombat }) {
   };
 
   return (
-    <>
-      <div
-        className="pixelated enemy"
-        onAnimationEnd={handleAnimationEnd}
-        style={{
-          translate: isInCombat && "96px 0",
-          animation: isInCombat && "enemy-walk 0.75s steps(3) 1",
-        }}
-      >
-        <pre className="enemy-translation">{translationPair[1]}</pre>
-      </div>
-    </>
+    <div
+      className="pixelated enemy"
+      onAnimationEnd={handleAnimationEnd}
+      style={{
+        translate: isInCombat && "96px 0",
+        animation: isInCombat && "enemy-walk 0.75s steps(3) 1",
+      }}
+    >
+      <pre className="enemy-translation">{translationPair[1]}</pre>
+    </div>
   );
 }
 
