@@ -49,3 +49,23 @@
     background-position: -48px -16px;
   }
 }
+
+@keyframes enemy-hit {
+  from {
+    background-position: 0 -80px;
+  }
+
+  to {
+    background-position: -64px -80px;
+  }
+}
+
+@keyframes enemy-attack {
+  from {
+    background-position: 0 -48px;
+  }
+
+  to {
+    background-position: -32px -48px;
+  }
+}

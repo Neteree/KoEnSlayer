@@ -11,7 +11,7 @@
 
 .player-translation {
   position: absolute;
-  top: -18px;
+  top: -20px;
   background-color: lightblue;
   opacity: 0.6;
   border-radius: 2.5px;
@@ -65,5 +65,15 @@
 
   to {
     background-position: -240px -96px;
+  }
+}
+
+@keyframes hit {
+  from {
+    background-position: 0 -64px;
+  }
+
+  to {
+    background-position: -80px -64px;
   }
 }

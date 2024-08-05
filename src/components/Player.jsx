@@ -15,20 +15,20 @@ function Player({
     const weapon = player.querySelector(".weapon");
 
     if (event.animationName == "walk") {
-      player.style.animation = "idle 0.5s steps(3) 1";
-
       if (translation == translationInput) {
+        player.style.animation = "idle 0.5s steps(3) 1";
         weapon.style.animation = "attack 0.5s steps(5) 1";
         weapon.style.opacity = 1;
         setScore((previousScore) => previousScore + 1);
       } else {
+        player.style.animation = "hit 0.5s steps(5) 1";
         setScore((previousScore) => previousScore - 1);
       }
     }
 
-    if (event.animationName == "idle") {
+    if (event.animationName == "idle" || event.animationName == "hit") {
       player.style.animation = "walk-back 0.75s steps(4) 1";
-      player.style.translate = 0;
+      player.style.translate = "0 0 ";
       weapon.style.animation = "none";
       weapon.style.opacity = 0;
     }
@@ -46,7 +46,7 @@ function Player({
         className="pixelated player"
         onAnimationEnd={handleAnimationEnd}
         style={{
-          translate: isInCombat && "84px 0",
+          translate: isInCombat && "96px 0",
           animation: isInCombat && "walk 0.75s steps(4) 1",
         }}
       >

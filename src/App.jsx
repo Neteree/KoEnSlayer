@@ -31,7 +31,11 @@ function App() {
         isInCombat={isInCombat}
         setIsInCombat={setIsInCombat}
       />
-      <Enemy translation={translationPair[1]} isInCombat={isInCombat} />
+      <Enemy
+        translationInput={translationInput}
+        translationPair={translationPair}
+        isInCombat={isInCombat}
+      />
 
       <form
         onSubmit={(e) => {

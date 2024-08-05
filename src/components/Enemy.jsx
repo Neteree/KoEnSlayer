@@ -1,14 +1,21 @@
 import "./Enemy.css";
 
-function Enemy({ translation, isInCombat }) {
+function Enemy({ translationInput, translationPair, isInCombat }) {
   const handleAnimationEnd = (event) => {
     const player = event.target;
 
     if (event.animationName == "enemy-walk") {
-      player.style.animation = "enemy-idle 0.5s steps(3) 1";
+      if (translationPair[0] == translationInput) {
+        player.style.animation = "enemy-hit 0.5s steps(4) 1";
+      } else {
+        player.style.animation = "enemy-attack 0.5s steps(2) 1";
+      }
     }
 
-    if (event.animationName == "enemy-idle") {
+    if (
+      event.animationName == "enemy-attack" ||
+      event.animationName == "enemy-hit"
+    ) {
       player.style.animation = "enemy-walk-back 0.75s steps(3) 1";
       player.style.translate = "192px 0";
     }
@@ -20,11 +27,11 @@ function Enemy({ translation, isInCombat }) {
         className="pixelated enemy"
         onAnimationEnd={handleAnimationEnd}
         style={{
-          translate: isInCombat && "108px 0",
+          translate: isInCombat && "96px 0",
           animation: isInCombat && "enemy-walk 0.75s steps(3) 1",
         }}
       >
-        <pre className="enemy-translation">{translation}</pre>
+        <pre className="enemy-translation">{translationPair[1]}</pre>
       </div>
     </>
   );
