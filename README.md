@@ -1,5 +1,8 @@
 # KoEN Slayer
 
+## Important Information
+Please make sure that you add the Korean Input Method Editor(IME), so that you are able to type in Korean. You can find more information about the IME at https://learn.microsoft.com/en-us/globalization/input/korean-ime
+
 ## Images
 ![Screenshot 2024-08-05 151518](https://github.com/user-attachments/assets/fea69ff4-03de-4784-ac4e-c5372e9dca9c)
 ![Screenshot 2024-08-05 151438](https://github.com/user-attachments/assets/68d12e7a-4e1f-4e26-ae2e-b3b66c263bbd)
@@ -8,4 +11,3 @@
 
 ## Credits
 The art for this project was made by Toadzilla and can be found at https://toadzilla.itch.io/dungeons-pack
-
