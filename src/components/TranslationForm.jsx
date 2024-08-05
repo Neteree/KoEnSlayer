@@ -1,3 +1,5 @@
+import "./TranslationForm.css";
+
 function TranslationForm({
   translationInput,
   setTranslationInput,

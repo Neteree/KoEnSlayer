@@ -11,11 +11,3 @@ body {
 .pixelated {
   image-rendering: pixelated;
 }
-
-.translation-box {
-  display: inline-block;
-}
-
-.translation-label {
-  display: block;
-}
