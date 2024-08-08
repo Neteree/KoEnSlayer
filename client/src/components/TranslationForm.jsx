@@ -25,7 +25,7 @@ function TranslationForm({
           type="text"
           value={translationInput}
           onChange={handleTranslationInput}
-          autocomplete="off"
+          autoComplete="off"
           required
         />
       </div>

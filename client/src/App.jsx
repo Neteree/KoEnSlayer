@@ -1,24 +1,39 @@
 import "./App.css";
 import shuffle from "./util/shuffle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Player from "./components/Player";
 import Enemy from "./components/Enemy";
 import TranslationForm from "./components/TranslationForm";
 
 function App() {
-  const translationPairs = [
-    ["hello", "안녕하세요"],
-    ["sorry", "죄송합니다"],
-    ["yes", "네"],
-    ["no", "아니요"],
-    ["thank you", "감사합니다"],
-  ];
-
   const [isInCombat, setIsInCombat] = useState(false);
   const [translationInput, setTranslationInput] = useState("");
-  const [translationPair, setTranslationPair] = useState(
-    shuffle(shuffle(translationPairs)[0])
-  );
+  const [translationPair, setTranslationPair] = useState([]);
+  const [translationPairs, setTranslationPairs] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://localhost:7245/api/TranslationPairs"
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        const transformedData = data.map((item) => [item.korean, item.english]);
+
+        setTranslationPairs(transformedData);
+        setTranslationPair(shuffle(shuffle(transformedData)[0]));
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <>
