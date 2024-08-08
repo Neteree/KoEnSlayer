@@ -1,0 +1,6 @@
+@KoEnAPI_HostAddress = http://localhost:5208
+
+GET {{KoEnAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
