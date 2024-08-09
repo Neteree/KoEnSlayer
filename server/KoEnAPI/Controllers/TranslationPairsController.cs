@@ -18,25 +18,16 @@ namespace KoEnAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetTranslationPairs(string sortBy = "english", string sortOrder = "asc")
+        public IActionResult GetTranslationPairs()
         {
-            var translationPairs = dbContext.TranslationPairs.AsQueryable();
-            bool isSortOrderDescending = sortOrder.Equals("desc", StringComparison.CurrentCultureIgnoreCase);
+            var translationPairs = dbContext.TranslationPairs.ToList();
 
-            translationPairs = sortBy.ToLower() switch
+            if(translationPairs.Count == 0)
             {
-                "korean" => isSortOrderDescending
-                    ? translationPairs.OrderByDescending(translationPair => translationPair.Korean)
-                    : translationPairs.OrderBy(translationPair => translationPair.Korean),
-                "english" => isSortOrderDescending
-                    ? translationPairs.OrderByDescending(translationPair => translationPair.English)
-                    : translationPairs.OrderBy(translationPair => translationPair.English),
-                _ => isSortOrderDescending
-                    ? translationPairs.OrderByDescending(translationPair => translationPair.English)
-                    : translationPairs.OrderBy(translationPair => translationPair.English),
-            };
+                return NotFound();
+            }
 
-            return Ok(translationPairs.ToList());
+            return Ok(translationPairs);
         }
 
         [HttpGet]
