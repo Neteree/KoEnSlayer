@@ -1,14 +1,10 @@
 import "./App.css";
-import shuffle from "./util/shuffle";
 import { useEffect, useState } from "react";
-import Player from "./components/Player";
-import Enemy from "./components/Enemy";
-import TranslationForm from "./components/TranslationForm";
+import Game from "./components/Game";
+import TranslationPairsManger from "./components/TranslationPairsManger";
 
 function App() {
-  const [isInCombat, setIsInCombat] = useState(false);
-  const [translationInput, setTranslationInput] = useState("");
-  const [translationPair, setTranslationPair] = useState([]);
+  const [isInGame, setIsInGame] = useState(true);
   const [translationPairs, setTranslationPairs] = useState([]);
 
   useEffect(() => {
@@ -23,10 +19,8 @@ function App() {
         }
 
         const data = await response.json();
-        const transformedData = data.map((item) => [item.korean, item.english]);
 
-        setTranslationPairs(transformedData);
-        setTranslationPair(shuffle(shuffle(transformedData)[0]));
+        setTranslationPairs(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -35,31 +29,27 @@ function App() {
     fetchData();
   }, []);
 
-  return (
-    <>
-      <Player
-        translationInput={translationInput}
-        setTranslationInput={setTranslationInput}
-        translation={translationPair[0]}
-        setNewTranslationPair={() =>
-          setTranslationPair(shuffle(shuffle(translationPairs)[0]))
-        }
-        isInCombat={isInCombat}
-        setIsInCombat={setIsInCombat}
-      />
-      <Enemy
-        translationInput={translationInput}
-        translationPair={translationPair}
-        isInCombat={isInCombat}
-      />
+  if (translationPairs.length > 0) {
+    return (
+      <>
+        <h1>KoEn Slayer</h1>
+        <button onClick={() => setIsInGame(!isInGame)}>
+          {isInGame ? "Manage translation pairs" : "Return to game"}
+        </button>
 
-      <TranslationForm
-        translationInput={translationInput}
-        setTranslationInput={setTranslationInput}
-        setIsInCombat={setIsInCombat}
-      />
-    </>
-  );
+        {isInGame ? (
+          <Game
+            translationPairs={translationPairs.map((item) => [
+              item.korean,
+              item.english,
+            ])}
+          />
+        ) : (
+          <TranslationPairsManger translationPairs={translationPairs} />
+        )}
+      </>
+    );
+  }
 }
 
 export default App;
