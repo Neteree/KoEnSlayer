@@ -17,11 +17,11 @@ function TranslationForm({
   return (
     <form onSubmit={handleTranslationInputSubmission}>
       <div className="translation-box">
-        <label className="translation-label" htmlFor="translation">
+        <label className="translation-label" htmlFor="translation-input">
           Translation Input:
         </label>
         <input
-          id="translation"
+          id="translation-input"
           type="text"
           value={translationInput}
           onChange={handleTranslationInput}

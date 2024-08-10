@@ -45,7 +45,10 @@ function App() {
             ])}
           />
         ) : (
-          <TranslationPairsManger translationPairs={translationPairs} />
+          <TranslationPairsManger
+            translationPairs={translationPairs}
+            setTranslationPairs={setTranslationPairs}
+          />
         )}
       </>
     );
