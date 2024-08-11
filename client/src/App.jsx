@@ -6,6 +6,7 @@ import TranslationPairsManger from "./components/TranslationPairsManger";
 function App() {
   const [isInGame, setIsInGame] = useState(true);
   const [translationPairs, setTranslationPairs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,40 +20,47 @@ function App() {
         }
 
         const data = await response.json();
-
         setTranslationPairs(data);
       } catch (error) {
         console.error("Error fetching data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  if (translationPairs.length > 0) {
-    return (
-      <>
-        <h1>KoEn Slayer</h1>
-        <button onClick={() => setIsInGame(!isInGame)}>
-          {isInGame ? "Manage translation pairs" : "Return to game"}
-        </button>
-
-        {isInGame ? (
-          <Game
-            translationPairs={translationPairs.map((item) => [
-              item.korean,
-              item.english,
-            ])}
-          />
-        ) : (
-          <TranslationPairsManger
-            translationPairs={translationPairs}
-            setTranslationPairs={setTranslationPairs}
-          />
-        )}
-      </>
-    );
+  if (isLoading) {
+    return <div>Loading...</div>;
   }
+
+  return (
+    <>
+      <h1>KoEn Slayer</h1>
+      <button onClick={() => setIsInGame(!isInGame)}>
+        {isInGame ? "Manage translation pairs" : "Return to game"}
+      </button>
+
+      {isInGame ? (
+        <Game
+          translationPairs={
+            translationPairs.length > 0
+              ? translationPairs.map((translationPair) => [
+                  translationPair.korean,
+                  translationPair.english,
+                ])
+              : [["Manage to add", "Manage to add"]]
+          }
+        />
+      ) : (
+        <TranslationPairsManger
+          translationPairs={translationPairs}
+          setTranslationPairs={setTranslationPairs}
+        />
+      )}
+    </>
+  );
 }
 
 export default App;

@@ -119,10 +119,7 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
             Update
           </button>
           <button
-            onClick={() =>
-              translationPairs.length > 1 &&
-              deleteTranslationPair(translationPairVariant.id)
-            }
+            onClick={() => deleteTranslationPair(translationPairVariant.id)}
           >
             Delete
           </button>

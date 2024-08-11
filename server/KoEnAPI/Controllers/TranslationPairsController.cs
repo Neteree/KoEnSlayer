@@ -22,11 +22,6 @@ namespace KoEnAPI.Controllers
         {
             var translationPairs = dbContext.TranslationPairs.ToList();
 
-            if(translationPairs.Count == 0)
-            {
-                return NotFound();
-            }
-
             return Ok(translationPairs);
         }
 
