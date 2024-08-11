@@ -4,7 +4,7 @@ import Game from "./components/Game";
 import TranslationPairsManger from "./components/TranslationPairsManger";
 
 function App() {
-  const [isInGame, setIsInGame] = useState(true);
+  const [isInGame, setIsInGame] = useState(false);
   const [translationPairs, setTranslationPairs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -38,20 +38,19 @@ function App() {
   return (
     <>
       <h1>KoEn Slayer</h1>
-      <button onClick={() => setIsInGame(!isInGame)}>
-        {isInGame ? "Manage translation pairs" : "Return to game"}
+      <button
+        disabled={translationPairs.length == 0}
+        onClick={() => translationPairs.length > 0 && setIsInGame(!isInGame)}
+      >
+        {isInGame ? "Manage translation pairs" : "Practice translation pairs"}
       </button>
 
       {isInGame ? (
         <Game
-          translationPairs={
-            translationPairs.length > 0
-              ? translationPairs.map((translationPair) => [
-                  translationPair.korean,
-                  translationPair.english,
-                ])
-              : [["Manage to add", "Manage to add"]]
-          }
+          translationPairs={translationPairs.map((translationPair) => [
+            translationPair.korean,
+            translationPair.english,
+          ])}
         />
       ) : (
         <TranslationPairsManger
