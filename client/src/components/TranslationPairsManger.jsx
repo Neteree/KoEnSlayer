@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TranslationControl from "./TranslationControl";
 
 function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
   const [translationPairsVariant, setTranslationPairsVariant] =
@@ -9,23 +10,13 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
     english: "",
   });
 
-  const handleTranslationInputChange = (id, language, translation) => {
-    setTranslationPairsVariant(
-      translationPairsVariant.map((translationPair) =>
-        translationPair.id === id
-          ? { ...translationPair, [language]: translation }
-          : translationPair
-      )
-    );
-  };
-
   const addTranslationPair = async () => {
     const response = await fetch(
       "https://localhost:7245/api/TranslationPairs",
       {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "   application/json",
         },
         body: JSON.stringify(translationPairMaster),
       }
@@ -82,74 +73,48 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
   return (
     <>
       <div>
-        <div>
-          <label htmlFor={"korean-master"}>Korean:</label>
-          <input
-            type="text"
-            id={"korean-master"}
-            value={translationPairMaster.korean}
-            onChange={(event) =>
-              setTranslationPairMaster({
-                ...translationPairMaster,
-                korean: event.target.value,
-              })
-            }
-          />
-        </div>
-        <div>
-          <label htmlFor={"english-master"}>English:</label>
-          <input
-            type="text"
-            id={"english-master"}
-            value={translationPairMaster.english}
-            onChange={(event) =>
-              setTranslationPairMaster({
-                ...translationPairMaster,
-                english: event.target.value,
-              })
-            }
-          />
-        </div>
+        {Object.keys(translationPairMaster).map((language) => {
+          return (
+            <TranslationControl
+              key={`${language}-master`}
+              id="master"
+              translationPair={translationPairMaster}
+              language={language}
+              onChange={(event) =>
+                setTranslationPairMaster({
+                  ...translationPairMaster,
+                  [language]: event.target.value,
+                })
+              }
+            />
+          );
+        })}
 
         <button onClick={() => addTranslationPair()}>Add</button>
       </div>
 
       {translationPairsVariant.map((translationPairVariant) => (
         <div key={translationPairVariant.id}>
-          <div>
-            <label htmlFor={"korean" + translationPairVariant.id}>
-              Korean:
-            </label>
-            <input
-              type="text"
-              id={"korean" + translationPairVariant.id}
-              value={translationPairVariant.korean}
-              onChange={(event) =>
-                handleTranslationInputChange(
-                  translationPairVariant.id,
-                  "korean",
-                  event.target.value
-                )
-              }
-            />
-          </div>
-          <div>
-            <label htmlFor={"english" + translationPairVariant.id}>
-              English:
-            </label>
-            <input
-              type="text"
-              id={"english" + translationPairVariant.id}
-              value={translationPairVariant.english}
-              onChange={(event) =>
-                handleTranslationInputChange(
-                  translationPairVariant.id,
-                  "english",
-                  event.target.value
-                )
-              }
-            />
-          </div>
+          {Object.keys(translationPairMaster).map((language) => {
+            return (
+              <TranslationControl
+                key={`${language}-${translationPairVariant.id}`}
+                id={translationPairVariant.id}
+                translationPair={translationPairVariant}
+                language={language}
+                onChange={(event) =>
+                  setTranslationPairsVariant(
+                    translationPairsVariant.map((translationPair) =>
+                      translationPair.id === translationPairVariant.id
+                        ? { ...translationPair, [language]: event.target.value }
+                        : translationPair
+                    )
+                  )
+                }
+              />
+            );
+          })}
+
           <button onClick={() => updateTranslationPair(translationPairVariant)}>
             Update
           </button>
