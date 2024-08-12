@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import TranslationControl from "./TranslationControl";
 
 function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
@@ -27,6 +27,13 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
       ...translationPairsVariant,
       addedTranslationPair,
     ]);
+
+    setTranslationPairMaster({
+      korean: "",
+      english: "",
+    });
+
+    setTranslationPairsVariant([...translationPairs, addedTranslationPair]);
     setTranslationPairs([...translationPairs, addedTranslationPair]);
   };
 
@@ -70,28 +77,59 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
     );
   };
 
+  const sortTranslationPairs = (previousTranslationPairs, language) => {
+    return [...previousTranslationPairs].sort(
+      (translationPairA, translationPairB) =>
+        translationPairA[language].localeCompare(translationPairB[language])
+    );
+  };
+
   return (
     <>
-      <div>
+      <form onSubmit={(event) => event.preventDefault()}>
         {Object.keys(translationPairMaster).map((language) => {
           return (
-            <TranslationControl
-              key={`${language}-master`}
-              id="master"
-              translationPair={translationPairMaster}
-              language={language}
-              onChange={(event) =>
-                setTranslationPairMaster({
-                  ...translationPairMaster,
-                  [language]: event.target.value,
-                })
-              }
-            />
+            <Fragment key={`${language}-master`}>
+              <TranslationControl
+                id="master"
+                translationPair={translationPairMaster}
+                language={language}
+                onChange={(event) => {
+                  setTranslationPairMaster({
+                    ...translationPairMaster,
+                    [language]: event.target.value,
+                  });
+
+                  setTranslationPairsVariant(
+                    translationPairs.filter((translationPair) =>
+                      translationPair[language].includes(event.target.value)
+                    )
+                  );
+                }}
+              />
+
+              <button
+                type="button"
+                onClick={() => {
+                  setTranslationPairs((previousTranslationPairs) =>
+                    sortTranslationPairs(previousTranslationPairs, language)
+                  );
+
+                  setTranslationPairsVariant((previousTranslationPairs) =>
+                    sortTranslationPairs(previousTranslationPairs, language)
+                  );
+                }}
+              >
+                Sort
+              </button>
+            </Fragment>
           );
         })}
 
-        <button onClick={() => addTranslationPair()}>Add</button>
-      </div>
+        <button type="submit" onClick={() => addTranslationPair()}>
+          Add
+        </button>
+      </form>
 
       {translationPairsVariant.map((translationPairVariant) => (
         <div key={translationPairVariant.id}>

@@ -7,6 +7,7 @@ function TranslationControl({ id, translationPair, language, onChange }) {
         id={`${language}-${id}`}
         value={translationPair[language]}
         onChange={onChange}
+        autoComplete="off"
       />
     </div>
   );

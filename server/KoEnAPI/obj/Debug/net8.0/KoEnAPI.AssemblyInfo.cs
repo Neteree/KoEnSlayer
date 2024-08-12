@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KoEnAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fba456672529e1efb114d3ed47c0f1c4826f4602")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f030f96457af792ae210b2edc95143e43cbaf763")]
 [assembly: System.Reflection.AssemblyProductAttribute("KoEnAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KoEnAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
