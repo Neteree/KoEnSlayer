@@ -15,12 +15,16 @@ function TranslationForm({
   };
 
   return (
-    <form onSubmit={handleTranslationInputSubmission}>
+    <form
+      className="translation-form"
+      onSubmit={handleTranslationInputSubmission}
+    >
       <div className="translation-box">
         <label className="translation-label" htmlFor="translation-input">
-          Translation Input:
+          Translation Input:{" "}
         </label>
         <input
+          className="input"
           id="translation-input"
           type="text"
           value={translationInput}
@@ -29,7 +33,9 @@ function TranslationForm({
           required
         />
       </div>
-      <button type="submit">submit</button>
+      <button className="button" type="submit">
+        submit
+      </button>
     </form>
   );
 }

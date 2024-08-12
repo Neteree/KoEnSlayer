@@ -1,8 +1,9 @@
 function TranslationControl({ id, translationPair, language, onChange }) {
   return (
     <div>
-      <label htmlFor={`${language}-${id}`}>{language}:</label>
+      <label htmlFor={`${language}-${id}`}>{language}: </label>
       <input
+        className="input"
         type="text"
         id={`${language}-${id}`}
         value={translationPair[language]}

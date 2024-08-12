@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from "react";
 import TranslationControl from "./TranslationControl";
+import "./TranslationPairsManger.css";
 
 function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
   const [translationPairsVariant, setTranslationPairsVariant] =
@@ -86,82 +87,106 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
 
   return (
     <>
-      <form onSubmit={(event) => event.preventDefault()}>
-        {Object.keys(translationPairMaster).map((language) => {
-          return (
-            <Fragment key={`${language}-master`}>
-              <TranslationControl
-                id="master"
-                translationPair={translationPairMaster}
-                language={language}
-                onChange={(event) => {
-                  setTranslationPairMaster({
-                    ...translationPairMaster,
-                    [language]: event.target.value,
-                  });
+      <form
+        className="translation-control-pair-form"
+        onSubmit={(event) => event.preventDefault()}
+      >
+        <div className="translation-control-pair">
+          {Object.keys(translationPairMaster).map((language) => {
+            return (
+              <div key={`${language}-master`}>
+                <TranslationControl
+                  id="master"
+                  translationPair={translationPairMaster}
+                  language={language}
+                  onChange={(event) => {
+                    setTranslationPairMaster({
+                      ...translationPairMaster,
+                      [language]: event.target.value,
+                    });
 
-                  setTranslationPairsVariant(
-                    translationPairs.filter((translationPair) =>
-                      translationPair[language].includes(event.target.value)
-                    )
-                  );
-                }}
-              />
+                    setTranslationPairsVariant(
+                      translationPairs.filter((translationPair) =>
+                        translationPair[language].includes(event.target.value)
+                      )
+                    );
+                  }}
+                />
 
-              <button
-                type="button"
-                onClick={() => {
-                  setTranslationPairs((previousTranslationPairs) =>
-                    sortTranslationPairs(previousTranslationPairs, language)
-                  );
+                <button
+                  className="button"
+                  type="button"
+                  onClick={() => {
+                    setTranslationPairs((previousTranslationPairs) =>
+                      sortTranslationPairs(previousTranslationPairs, language)
+                    );
 
-                  setTranslationPairsVariant((previousTranslationPairs) =>
-                    sortTranslationPairs(previousTranslationPairs, language)
-                  );
-                }}
-              >
-                Sort
-              </button>
-            </Fragment>
-          );
-        })}
-
-        <button type="submit" onClick={() => addTranslationPair()}>
+                    setTranslationPairsVariant((previousTranslationPairs) =>
+                      sortTranslationPairs(previousTranslationPairs, language)
+                    );
+                  }}
+                >
+                  Sort
+                </button>
+              </div>
+            );
+          })}
+        </div>
+        <button
+          className="button"
+          type="submit"
+          onClick={() => addTranslationPair()}
+        >
           Add
         </button>
       </form>
 
       {translationPairsVariant.map((translationPairVariant) => (
-        <div key={translationPairVariant.id}>
-          {Object.keys(translationPairMaster).map((language) => {
-            return (
-              <TranslationControl
-                key={`${language}-${translationPairVariant.id}`}
-                id={translationPairVariant.id}
-                translationPair={translationPairVariant}
-                language={language}
-                onChange={(event) =>
-                  setTranslationPairsVariant(
-                    translationPairsVariant.map((translationPair) =>
-                      translationPair.id === translationPairVariant.id
-                        ? { ...translationPair, [language]: event.target.value }
-                        : translationPair
+        <form
+          className="translation-control-pair-form"
+          key={translationPairVariant.id}
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <div className="translation-control-pair">
+            {Object.keys(translationPairMaster).map((language) => {
+              return (
+                <TranslationControl
+                  key={`${language}-${translationPairVariant.id}`}
+                  id={translationPairVariant.id}
+                  translationPair={translationPairVariant}
+                  language={language}
+                  onChange={(event) =>
+                    setTranslationPairsVariant(
+                      translationPairsVariant.map((translationPair) =>
+                        translationPair.id === translationPairVariant.id
+                          ? {
+                              ...translationPair,
+                              [language]: event.target.value,
+                            }
+                          : translationPair
+                      )
                     )
-                  )
-                }
-              />
-            );
-          })}
+                  }
+                />
+              );
+            })}
+          </div>
 
-          <button onClick={() => updateTranslationPair(translationPairVariant)}>
+          <button
+            className="button"
+            type="submit"
+            onClick={() => updateTranslationPair(translationPairVariant)}
+          >
             Update
           </button>
           <button
+            className="button"
+            type="button"
             onClick={() => deleteTranslationPair(translationPairVariant.id)}
           >
             Delete
           </button>
-        </div>
+        </form>
       ))}
     </>
   );

@@ -1,3 +1,33 @@
 * {
   margin: 0;
+  padding: 0;
+}
+
+.app {
+  display: grid;
+  place-items: center;
+  width: 100vw;
+}
+
+.button {
+  border: 1px solid midnightblue;
+  border-radius: 4px;
+  margin: 5px 0 5px 5px;
+  background-color: darkslateblue;
+  color: white;
+  padding: 4px 8px;
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.input {
+  border: 1px solid midnightblue;
+  border-radius: 4px;
+  padding: 2px;
+  background-color: ghostwhite;
+  font-size: medium;
 }

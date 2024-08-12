@@ -36,9 +36,10 @@ function App() {
   }
 
   return (
-    <>
+    <div className="app">
       <h1>KoEn Slayer</h1>
       <button
+        className="button"
         disabled={translationPairs.length == 0}
         onClick={() => translationPairs.length > 0 && setIsInGame(!isInGame)}
       >
@@ -58,7 +59,7 @@ function App() {
           setTranslationPairs={setTranslationPairs}
         />
       )}
-    </>
+    </div>
   );
 }
 
