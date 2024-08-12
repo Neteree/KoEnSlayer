@@ -3,7 +3,7 @@
   margin: 48px 8px;
   width: 16px;
   height: 16px;
-  translate: 192px 0;
+  translate: 312px 0;
   scale: 2 2;
   background-image: url("../src/assets/bat.png");
   animation: enemy-idle 0.5s steps(3) infinite;
@@ -13,6 +13,7 @@
 .enemy-translation {
   position: absolute;
   top: 18px;
+  right: 0;
   background-color: pink;
   opacity: 0.6;
   border-radius: 2.5px;

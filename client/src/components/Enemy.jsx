@@ -17,7 +17,7 @@ function Enemy({ translationInput, translationPair, isInCombat }) {
       event.animationName == "enemy-hit"
     ) {
       player.style.animation = "enemy-walk-back 0.75s steps(3) 1";
-      player.style.translate = "192px 0";
+      player.style.translate = "310px 0";
     }
   };
 
@@ -26,7 +26,7 @@ function Enemy({ translationInput, translationPair, isInCombat }) {
       className="pixelated enemy"
       onAnimationEnd={handleAnimationEnd}
       style={{
-        translate: isInCombat && "96px 0",
+        translate: isInCombat && "156px 0",
         animation: isInCombat && "enemy-walk 0.75s steps(3) 1",
       }}
     >

@@ -28,6 +28,10 @@
   opacity: 0;
 }
 
+.score {
+  margin-bottom: 8px;
+}
+
 @keyframes idle {
   from {
     background-position: 0 0;

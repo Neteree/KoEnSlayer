@@ -43,12 +43,12 @@ function Player({
 
   return (
     <>
-      <p>Score: {score}</p>
+      <p className="score">Score: {score}</p>
       <div
         className="pixelated player"
         onAnimationEnd={handleAnimationEnd}
         style={{
-          translate: isInCombat && "96px 0",
+          translate: isInCombat && "156px 0",
           animation: isInCombat && "walk 0.75s steps(4) 1",
         }}
       >
