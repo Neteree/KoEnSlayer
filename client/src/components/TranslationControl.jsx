@@ -9,6 +9,7 @@ function TranslationControl({ id, translationPair, language, onChange }) {
         value={translationPair[language]}
         onChange={onChange}
         autoComplete="off"
+        required
       />
     </div>
   );

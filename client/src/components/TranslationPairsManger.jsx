@@ -135,7 +135,11 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
         <button
           className="button"
           type="submit"
-          onClick={() => addTranslationPair()}
+          onClick={() =>
+            translationPairMaster.korean.length > 0 &&
+            translationPairMaster.english.length > 0 &&
+            addTranslationPair()
+          }
         >
           Add
         </button>
@@ -175,7 +179,11 @@ function TranslationPairsManager({ translationPairs, setTranslationPairs }) {
           <button
             className="button"
             type="submit"
-            onClick={() => updateTranslationPair(translationPairVariant)}
+            onClick={() =>
+              translationPairVariant.korean.length > 0 &&
+              translationPairVariant.english.length > 0 &&
+              updateTranslationPair(translationPairVariant)
+            }
           >
             Update
           </button>
