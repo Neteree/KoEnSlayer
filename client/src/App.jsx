@@ -38,14 +38,11 @@ function App() {
   return (
     <div className="app">
       <h1>KoEn Slayer</h1>
-      <button
-        className="button"
-        disabled={translationPairs.length == 0}
-        onClick={() => translationPairs.length > 0 && setIsInGame(!isInGame)}
-      >
-        {isInGame ? "Manage translation pairs" : "Practice translation pairs"}
-      </button>
-
+      {translationPairs.length > 0 && (
+        <button className="button" onClick={() => setIsInGame(!isInGame)}>
+          {isInGame ? "Manage translation pairs" : "Practice translation pairs"}
+        </button>
+      )}
       {isInGame ? (
         <Game
           translationPairs={translationPairs.map((translationPair) => [
