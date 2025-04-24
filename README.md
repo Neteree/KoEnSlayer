@@ -1,9 +1,60 @@
-# KoEN Slayer
+# KoEnSlayer
+
+A language-learning game where players translate Korean into English and vice versa to battle enemies. Earn points by correctly translating words and avoid damage from incorrect answers.
+
+## How to Play
+- **Correct translations**: Attack the enemy and gain points.
+- **Incorrect translations**: Get hit and lose points.
 
 ## Important Information
-If you are on Windows, please make sure that you add the Korean Input Method Editor(IME), so that you are able to type in Korean. You can find more information about the IME at https://learn.microsoft.com/en-us/globalization/input/korean-ime. Once set up you can press right alt to alternate between English and Korean.
+- **Windows users**:  
+  - Ensure you have the **Korean Input Method Editor (IME)** installed to type in Korean.  
+  - You can find more details [here](https://learn.microsoft.com/en-us/globalization/input/korean-ime).  
+  - Press **Right Alt** to switch between English and Korean input.
 
-If you want to get Korean input working on other platforms you will have to look that up, as I have not currently tried on any other platforms, besides Windows.
+- **Other platforms**:  
+  - You may need to manually set up Korean input. Please refer to your OS documentation.
+
+## Tech Stack
+- **React** (Frontend)
+- **JavaScript** (Game logic)
+- **ASP.NET** (Backend)
+- **CSS & HTML** (UI)
+
+## Installation
+
+### Frontend (React)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Neteree/KoEnSlayer.git
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd KoEnSlayer/client
+   ```
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### Backend (ASP.NET)
+
+1. Navigate to the server folder:
+   ```bash
+   cd KoEnSlayer/server
+   ```
+2. Restore dependencies:
+   ```bash
+   dotnet restore
+   ```
+1. Run the backend server:
+   ```bash
+   dotnet run
+   ```
 
 ## Images
 ![Screenshot 2024-08-13 144531](https://github.com/user-attachments/assets/2f0e258d-c629-4fce-91c8-79d4dc7060ec)
